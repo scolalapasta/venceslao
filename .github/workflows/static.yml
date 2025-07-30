@@ -6,7 +6,7 @@
     <title>Briscola variane Veceslao</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial;
             background-color: darkblue;
             padding: 2rem;
         }
