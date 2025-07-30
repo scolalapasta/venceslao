@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Briscola variane Veceslao</title>
     <style>
-        body {
-            font-family: Arial;
+        body {font-family: Arial;
             background-color: darkblue;
             padding: 2rem;
         }
