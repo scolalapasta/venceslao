@@ -1,0 +1,93 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Briscola variane Veceslao</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: darkblue;
+            padding: 2rem;
+        }
+
+        input {
+            font-size: 3rem;
+            padding: 0.5rem;
+            width: 200px;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            font-size: 1.2rem;
+        }
+
+        .feedback {
+            margin-top: 1rem;
+            font-family: monospace;
+        }
+
+        .letter {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            margin: 2px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        .text {
+            color:antiquewhite
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text">Briscola variante Venceslao</h1>
+    <p class="text"> Variante diffusasi in Veneto, in particolare a Padova, che si differenzia dalla versione classica perché si gioca solo in tre e il seme di briscola può cambiare durante la partita. Sono principalmente due gli eventi che fanno cambiare la briscola, con effetto immediato: se durante una mano vengono giocate tre carte dello stesso seme quello diventa la briscola; se un giocatore pesca il due di spade (Venceslao) è tenuto a giocarlo immediatamente, e chi tra gli altri due giocatori è più rapido a toccarlo ha la possibilità di decidere un nuovo seme di briscola. Ci sono altre tre carte speciali: il sette di bastoni (chiamato anche "la bestia"), il fante di ori e il fante di bastoni.  Queste carte, a differenza di Venceslao, non devono essere necessariamente giocate appena pescate. Quando un giocatore gioca il sette di bastoni deve mostrare le altre due carte a tutti i giocatori. Chi gioca il fante di ori può decidere di vedere le carte di un giocatore a scelta, acquisendo una informazione in più rispetto agli avversari. Il giocatore che butta il fante di bastoni può decidere invece se attivare il doppio turno: in caso affermativo si fanno due giri e prenderà tutte e sei le carte chi ha giocato la carte più alta, secondo le regole della briscola tradizionale.</p>
+</body>
+</html>
+
